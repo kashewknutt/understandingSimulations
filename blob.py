@@ -2,7 +2,7 @@ import random
 
 import numpy as np
 
-class blob:
+class Blob:
     def __init__(self, gender, age, environmentInstance):  #gender : true = male
         self.gender=gender
         self.age=age
@@ -47,6 +47,9 @@ class blob:
 
         # agar no empty it'll stay wahi; ab kuch nahi ho sakta in deadlock figure out karenge baadme what to do
         self.environment.space[self.x, self.y] = [0, 0, 150]
+
+    def mitosis(self):
+        pass
 
 
         
