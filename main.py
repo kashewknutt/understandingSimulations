@@ -10,11 +10,11 @@ predators = [Predator(True, 5, env) for _ in range(10)]
 for _ in range(10):
     Blob(True, 5, env)
 def update(frame):                           #decrement age after you add the die function for all entities
-    #print(env.blobs)
+    print(env.blobs)
     for blob in env.blobs:
         blob.movement()
     for predator in predators:
-        #print(predator)
+        print(predator)
         predator.movement()  
     # Update the plot
     im.set_array(env.space)

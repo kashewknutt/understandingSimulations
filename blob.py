@@ -16,9 +16,9 @@ class Blob:
         self.environment.blobs.append(self)
 
     def movement(self):
-        if np.array_equal(self.environment.space[self.x, self.y], [255, 0, 0]):
+        if np.array_equal(self.environment.space[self.x, self.y], [255, 0, 0]) or self.energy <= 0:
             self.environment.blobs.remove(self)
-            return  
+            return
         self.environment.space[self.x, self.y] = [0, 0, 0]
         
         possible_moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
