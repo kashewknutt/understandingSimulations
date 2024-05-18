@@ -5,6 +5,7 @@ class Environment:
     def __init__(self, dimension):
         self.dimension = dimension
         self.space = np.zeros((dimension, dimension, 3), dtype=int)
+        self.add_food()
 
     
     # food is added. food_position list of fixed food positions, if any [(x1, y1), (x2, y2)]; percentage = limits percentage of screen to be food

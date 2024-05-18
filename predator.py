@@ -1,7 +1,7 @@
 
 import random
 import numpy as np
-class predator:
+class Predator:
     def __init__(self,gender,age,environmentClassInstance):  #gender is boolean true->male  false->female
         self.gender=gender
         self.age=age
