@@ -7,6 +7,8 @@ class Predator:
         self.age=age
         self.environment=environmentClassInstance
         self.colour=[255, 0, 0]
+        self.x = random.randint(0, self.environment.dimension - 1)     #remember to check if the cell is empty first
+        self.y = random.randint(0, self.environment.dimension - 1)
         self.environment.space[self.x,self.y] = self.colour     #predator is red
         self.energy=50     #initialised energy to 50 at the start
         self.enerygyForMovement=10

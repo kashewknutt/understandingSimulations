@@ -9,14 +9,14 @@ class Environment:
 
     
     # food is added. food_position list of fixed food positions, if any [(x1, y1), (x2, y2)]; percentage = limits percentage of screen to be food
-    def add_food(self, food_positions=None, min_food_percentage=25, max_food_percentage=75):
+    def add_food(self, food_positions=[], min_food_percentage=25, max_food_percentage=75):
         
         if food_positions:
             for pos in food_positions:
                 if 0 <= pos[0] < self.dimension and 0 <= pos[1] < self.dimension:
                     self.space[pos[0], pos[1]] = [0, 200, 0]
 
-        food_percentage = random(min_food_percentage, max_food_percentage)
+        food_percentage = random.randint(min_food_percentage, max_food_percentage)
         min_num_random_food = int((food_percentage / 100) * (self.dimension ** 2))
 
         num_random_food = max(min_num_random_food - len(food_positions), 0)
