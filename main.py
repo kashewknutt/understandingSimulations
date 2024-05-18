@@ -13,7 +13,7 @@ def update(frame):                           #decrement age after you add the di
     #print(env.blobs)
     for blob in env.blobs:
         blob.movement()
-    for predator in predators:
+    for predator in env.predators:
         #print(predator)
         predator.movement()  
     # Update the plot
