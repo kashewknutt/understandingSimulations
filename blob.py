@@ -13,10 +13,12 @@ class Blob:
         self.environment.space[self.x,self.y] = [0, 0, 150]
         self.energy_for_movement = 10
         self.food_content = 30
+        self.environment.blobs.append(self)
 
     def movement(self):
-        if self.environment.space[self.x, self.y] == [255,0,0]:
-            del Blob
+        if np.array_equal(self.environment.space[self.x, self.y], [255, 0, 0]):
+            self.environment.blobs.remove(self)
+            return  
         self.environment.space[self.x, self.y] = [0, 0, 0]
         
         possible_moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
