@@ -37,7 +37,7 @@ class blob:
                     self.environment.space[self.x, self.y] = [0, 0, 150]
                     return
 
-        # If no move is possible, stay in the same position
+        # agar no empty it'll stay wahi; ab kuch nahi ho sakta in deadlock figure out karenge baadme what to do
         self.environment.space[self.x, self.y] = [0, 0, 150]
 
 
