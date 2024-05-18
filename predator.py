@@ -27,10 +27,7 @@ class Predator:
             new_y = self.y + move[1]
             if 0 <= new_x < self.environment.dimension and 0 <= new_y < self.environment.dimension:
                 if np.array_equal(self.environment.space[new_x, new_y], [0, 0,150]):
-                    self.x, self.y = new_x, new_y
-                    self.environment.space[self.x, self.y] = self.colour
-                    self.energy-=self.enerygyForMovement
-                    self.energy+=self.foodEnergy
+                    self.attackBlob(new_x,new_y)
                     return
 
         # lets say agar resource doeesnt exist, toh itll automatically move to the available
@@ -46,3 +43,10 @@ class Predator:
 
         # agar no empty it'll stay wahi; ab kuch nahi ho sakta in deadlock figure out karenge baadme what to do
         self.environment.space[self.x, self.y] = self.colour
+    
+    def attackBlob(self,x,y):
+        self.x=x
+        self.y=y
+        self.environment.space[x,y]=self.colour
+        self.energy+=self.foodEnergy
+        self.energy-=self.enerygyForMovement
