@@ -6,7 +6,7 @@ import matplotlib.animation as animation
 import random
 
 env=Environment(50)
-for _ in range(50):
+for _ in range(20):
     Predator(True, 5, env)
 for _ in range(60):
     Blob(True, 5, env)
