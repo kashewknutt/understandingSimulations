@@ -11,7 +11,7 @@ class Environment:
 
     
     # food is added. food_position list of fixed food positions, if any [(x1, y1), (x2, y2)]; percentage = limits percentage of screen to be food
-    def add_food(self, food_positions=[], min_food_percentage=25, max_food_percentage=75):
+    def add_food(self, food_positions=[], min_food_percentage=5, max_food_percentage=10):
         
         if food_positions:
             for pos in food_positions:

@@ -10,16 +10,16 @@ class Predator:
         self.x = random.randint(0, self.environment.dimension - 1)     #remember to check if the cell is empty first
         self.y = random.randint(0, self.environment.dimension - 1)
         self.environment.space[self.x,self.y] = self.colour     #predator is red
-        self.energy=50     #initialised energy to 50 at the start
-        self.enerygyForMovement=10
-        self.foodEnergy=30  #energy increased for consuming blob(if you're feeling brave, give it the energy of the blob somehow)
+        self.energy=200     #initialised energy to 50 at the start
+        self.enerygyForMovement=5
+        self.attackEnergy=50  #energy increased for consuming blob(if you're feeling brave, give it the energy of the blob somehow)
         self.environment.predators.append(self)
     
     
     def movement(self):
         if(self.energy<=0):
-            self.environment.predator.remove(self)
-            del self                                        #incase of death
+            self.environment.predators.remove(self)
+            self.environment.space[self.x,self.y]=[0,0,0]                                        #incase of death
             return
 
         self.environment.space[self.x, self.y] = [0, 0, 0]
@@ -54,5 +54,5 @@ class Predator:
         self.x=x
         self.y=y
         self.environment.space[x,y]=self.colour
-        self.energy+=self.foodEnergy
+        self.energy+=self.attackEnergy
         self.energy-=self.enerygyForMovement

@@ -11,12 +11,16 @@ class Blob:
         self.x = random.randint(0, self.environment.dimension - 1)
         self.y = random.randint(0, self.environment.dimension - 1)
         self.environment.space[self.x,self.y] = [0, 0, 150]
-        self.energy_for_movement = 10
-        self.food_content = 30
+        self.energy_for_movement = 5
+        self.food_content = 25
         self.environment.blobs.append(self)
 
     def movement(self):
-        if np.array_equal(self.environment.space[self.x, self.y], [255, 0, 0]) or self.energy <= 0:
+        if self.energy <= 0:
+            self.environment.blobs.remove(self)
+            self.environment.space[self.x,self.y] = [0,0,0]
+            return
+        if np.array_equal(self.environment.space[self.x, self.y], [255, 0, 0]):
             self.environment.blobs.remove(self)
             return
         self.environment.space[self.x, self.y] = [0, 0, 0]
