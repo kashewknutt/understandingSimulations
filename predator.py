@@ -13,6 +13,7 @@ class Predator:
         self.energy=50     #initialised energy to 50 at the start
         self.enerygyForMovement=10
         self.foodEnergy=30  #energy increased for consuming blob(if you're feeling brave, give it the energy of the blob somehow)
+        self.environment.predators.append(self)
     
     
     def movement(self):
