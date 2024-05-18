@@ -9,7 +9,7 @@ class predator:
         self.colour=[255, 0, 0]
         self.environment.space[self.x,self.y] = self.colour     #predator is red
         self.energy=50     #initialised energy to 50 at the start
-        
+        self.enerygyForMovement=10
     
     
     def movement(self):
@@ -26,6 +26,7 @@ class predator:
                 if np.array_equal(self.environment.space[new_x, new_y], [0, 0,150]):
                     self.x, self.y = new_x, new_y
                     self.environment.space[self.x, self.y] = self.colour
+                    self.energy-=self.enerygyForMovement
                     return
 
         # lets say agar resource doeesnt exist, toh itll automatically move to the available
@@ -36,6 +37,7 @@ class predator:
                 if np.array_equal(self.environment.space[new_x, new_y], [0, 0, 0]):
                     self.x, self.y = new_x, new_y
                     self.environment.space[self.x, self.y] = self.colour
+                    self.energy-=self.enerygyForMovement
                     return
 
         # agar no empty it'll stay wahi; ab kuch nahi ho sakta in deadlock figure out karenge baadme what to do
