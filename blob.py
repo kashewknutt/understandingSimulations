@@ -15,6 +15,8 @@ class Blob:
         self.food_content = 30
 
     def movement(self):
+        if self.environment.space[self.x, self.y] == [255,0,0]:
+            del Blob
         self.environment.space[self.x, self.y] = [0, 0, 0]
         
         possible_moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
