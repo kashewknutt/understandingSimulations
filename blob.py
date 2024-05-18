@@ -3,10 +3,11 @@ import random
 import numpy as np
 
 class blob:
-    def __init__(self, gender, age, environmentInstance):  #gender : true = male
+    def __init__(self, gender, age, environmentInstance, energy):  #gender : true = male
         self.gender=gender
         self.age=age
         self.environement = environmentInstance
+        self.energy = 10
         x = random.randint(0, self.environment.dimension - 1)
         y = random.randint(0, self.environment.dimension - 1)
         self.environment.space[x,y] = [0, 0, 150]
@@ -25,6 +26,7 @@ class blob:
                 if np.array_equal(self.environment.space[new_x, new_y], [0, 200, 0]):
                     self.x, self.y = new_x, new_y
                     self.environment.space[self.x, self.y] = [0, 0, 150]
+                    self.energy -= 10
                     return
 
         # lets say agar resource doeesnt exist, toh itll automatically move to the available
@@ -35,6 +37,7 @@ class blob:
                 if np.array_equal(self.environment.space[new_x, new_y], [0, 0, 0]):
                     self.x, self.y = new_x, new_y
                     self.environment.space[self.x, self.y] = [0, 0, 150]
+                    self.energy -= 10
                     return
 
         # agar no empty it'll stay wahi; ab kuch nahi ho sakta in deadlock figure out karenge baadme what to do
