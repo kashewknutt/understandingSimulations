@@ -17,6 +17,11 @@ class Predator:
     
     
     def movement(self):
+        if(self.energy<=0):
+            self.environment.predator.remove(self)
+            del self                                        #incase of death
+            return
+
         self.environment.space[self.x, self.y] = [0, 0, 0]
         
         possible_moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
