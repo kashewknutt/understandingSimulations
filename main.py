@@ -4,7 +4,8 @@ from blob import Blob
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import random
-
+blob_number_per_frame=[]
+predator_number_per_frame=[]
 env=Environment(50)
 for _ in range(0):
     Predator(True, 5, env)
@@ -12,6 +13,7 @@ for _ in range(50):
     Blob(True, 5, env)
 def update(frame):                           #decrement age after you add the die function for all entities
     #print(env.blobs)
+
     for blob in env.blobs:
         blob.age -= 0.2
         blob.movement()
@@ -21,6 +23,8 @@ def update(frame):                           #decrement age after you add the di
         predator.movement()  
     # Update the plot
     im.set_array(env.space)
+    blob_number_per_frame.append(len(env.blobs))
+    predator_number_per_frame.append(len(env.predators))
     return [im]
 fig, ax = plt.subplots()
 im = ax.imshow(env.space, animated=True)
