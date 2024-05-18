@@ -10,6 +10,7 @@ class predator:
         self.environment.space[self.x,self.y] = self.colour     #predator is red
         self.energy=50     #initialised energy to 50 at the start
         self.enerygyForMovement=10
+        self.foodEnergy=30  #energy increased for consuming blob(if you're feeling brave, give it the energy of the blob somehow)
     
     
     def movement(self):
@@ -27,6 +28,7 @@ class predator:
                     self.x, self.y = new_x, new_y
                     self.environment.space[self.x, self.y] = self.colour
                     self.energy-=self.enerygyForMovement
+                    self.energy+=self.foodEnergy
                     return
 
         # lets say agar resource doeesnt exist, toh itll automatically move to the available
