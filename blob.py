@@ -1,21 +1,30 @@
 import random
-
+from environment import Environment
 import numpy as np
 
 class Blob:
-    def __init__(self, gender, age, environmentInstance):  #gender : true = male
+    def __init__(self, gender, age, environmentInstance,x=-1,y=-1):  #gender : true = male
         self.gender=gender
         self.age=age
         self.environment = environmentInstance
-        self.energy = 50
-        self.x = random.randint(0, self.environment.dimension - 1)
-        self.y = random.randint(0, self.environment.dimension - 1)
+        self.birthenergy=50
+        self.energy = self.birthenergy
+        if x==-1:
+            self.x =random.randint(0,self.environment.dimension-1)
+            self.y = random.randint(0,self.environment.dimension-1)
+        else:
+            self.x=x
+            self.y=y
         self.environment.space[self.x,self.y] = [0, 0, 150]
         self.energy_for_movement = 5
         self.food_content = 25
         self.environment.blobs.append(self)
+        self.childage=5
+
 
     def movement(self):
+        if(self.energy>=100):
+            self.mitosis()
         if self.energy <= 0:
             self.environment.blobs.remove(self)
             self.environment.space[self.x,self.y] = [0,0,0]
@@ -57,7 +66,18 @@ class Blob:
         self.environment.space[self.x, self.y] = [0, 0, 150]
 
     def mitosis(self):
-        pass
+        j=0
+        for i in range(-1,2):
+            for j in range(-1,2):
+                newx=self.x+i
+                newy=self.y+j
+                if 0 <= newx < self.environment.dimension and 0 <= newy < self.environment.dimension:
+                    if np.array_equal(self.environment.space[newx, newy], [0, 0, 0]):
+                        
+                        Blob(True, self.childage, self.environment,newx,newy)
+                        self.energy=self.birthenergy
 
+
+        
 
         
