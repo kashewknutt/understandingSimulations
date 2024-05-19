@@ -23,16 +23,18 @@ class Blob:
 
 
     def movement(self):
-        if(self.energy>=100):
-            self.mitosis()
+        
         if self.energy <= 0 or self.age >= 10:
             self.environment.blobs.remove(self)
-            del(self)
             self.environment.space[self.x,self.y] = [0,0,0]
+            del(self)
             return
         if np.array_equal(self.environment.space[self.x, self.y], [255, 0, 0]):
             self.environment.blobs.remove(self)
+            del(self)
             return
+        if(self.energy>=200):
+            self.mitosis()
         self.environment.space[self.x, self.y] = [0, 0, 0]
         
         possible_moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
