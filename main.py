@@ -10,7 +10,7 @@ predator_number_per_frame=[]
 env=Environment(50)
 for _ in range(20):
     Predator(True, 5, env)
-for _ in range(50):
+for _ in range(20):
     Blob(True, 5, env)
 def update(frame):                           #decrement age after you add the die function for all entities
     #print(env.blobs)
