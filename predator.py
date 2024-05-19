@@ -1,6 +1,8 @@
 
 import random
 import numpy as np
+from playsound import playsound
+
 class Predator:
     def __init__(self,gender,age,environmentClassInstance,x=-1,y=-1):  #gender is boolean true->male  false->female
         self.gender=gender
@@ -84,6 +86,7 @@ class Predator:
                                         if np.array_equal(self.environment.space[x_child,y_child], [0, 0, 0]):
                                             rand=random.choice([True, False])
                                             Predator(rand,5,self.environment,x_child,y_child)
+                                            playsound('psst.wav')
                                             return
 
 

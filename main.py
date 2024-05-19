@@ -31,10 +31,9 @@ def update(frame):
 
     #generating 5 blobs at random frames
     if frame in blobFrames:
-        for _ in range(5):
+        for _ in range(100):
             tempForGender=random.choice([True, False])
             Blob(tempForGender, 5, env)
-
     #Blob movement in each frame
     for blob in env.blobs:
         blob.age += 0.2
@@ -55,7 +54,7 @@ def update(frame):
 
     #generate food every 10 frames
     if frame%10==0 and frame != 0:
-        env.add_food([],5,10)
+        env.add_food([],5,30)
  
     # Update the plot
     im.set_array(env.space)
