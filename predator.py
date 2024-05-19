@@ -1,7 +1,7 @@
 
 import random
 import numpy as np
-from playsound import playsound
+import simpleaudio as sa
 
 class Predator:
     def __init__(self,gender,age,environmentClassInstance,x=-1,y=-1):  #gender is boolean true->male  false->female
@@ -86,7 +86,11 @@ class Predator:
                                         if np.array_equal(self.environment.space[x_child,y_child], [0, 0, 0]):
                                             rand=random.choice([True, False])
                                             Predator(rand,5,self.environment,x_child,y_child)
-                                            playsound('psst.wav')
-                                            return
+                                            wave_obj = sa.WaveObject.from_wave_file('button-2.wav')
 
+    # Play the sound
+                                            play_obj = wave_obj.play()
+                                            #play_obj.wait_done()
+
+                                            return
 
