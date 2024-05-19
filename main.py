@@ -25,7 +25,10 @@ predFrames.sort()
 
 for _ in range(20):
     Blob(True, 5, env)
-def update(frame):                           #decrement age after you add the die function for all entities
+
+
+#increment age after you add the die function for all entities
+def update(frame):
     #print(env.blobs)
 
     for blob in env.blobs:
@@ -37,7 +40,12 @@ def update(frame):                           #decrement age after you add the di
     for predator in env.predators:
         predator.age += 0.2
         #print(predator)
-        predator.movement()  
+        predator.movement()
+
+    #generate food every 10 frames
+    if frame%10==0:
+        env.add_food()
+ 
     # Update the plot
     im.set_array(env.space)
     blob_number_per_frame.append(len(env.blobs))
