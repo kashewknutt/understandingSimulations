@@ -35,7 +35,7 @@ def update(frame):
         blob.age += 0.2
         blob.movement()
     if frame in predFrames:
-        Predator(True, 5, env)
+        Predator(random.choice(True, False), 5, env)
     
     for predator in env.predators:
         predator.age += 0.2
