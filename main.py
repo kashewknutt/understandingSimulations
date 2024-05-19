@@ -55,7 +55,7 @@ def update(frame):
 
     #generate food every 10 frames
     if frame%10==0:
-        env.add_food(5,10)
+        env.add_food([],5,10)
  
     # Update the plot
     im.set_array(env.space)
