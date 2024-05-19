@@ -54,7 +54,7 @@ def update(frame):
         predator.movement()
 
     #generate food every 10 frames
-    if frame%10==0:
+    if frame%10==0 and frame != 0:
         env.add_food([],5,10)
  
     # Update the plot
