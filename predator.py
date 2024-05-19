@@ -26,10 +26,10 @@ class Predator:
     
     
     def movement(self):
-        if(self.energy<=0 or self.age>15):                                      #incase of death
+        if(self.energy<=0 or self.age>15):                 #incase of death
             self.environment.predators.remove(self)
-            del(self)                                                           #releasing memory from the heap
-            self.environment.space[self.x,self.y]=[0,0,0]                                        
+            self.environment.space[self.x,self.y]=[0,0,0]   
+            del(self)                                      #releasing memory from the heap
             return
 
         self.sex()                          #sex                   
