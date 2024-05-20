@@ -3,10 +3,6 @@ import simpy
 import numpy as np
 
 # Constants
-maxEmployees = 10
-avgTime = 5
-callInterval = 2
-simTime = 120
 customersHandled = 0
 
 class CallCenter:
@@ -42,9 +38,10 @@ def setup(env, numEmployees, avgTime, callInterval):
         i += 1
         env.process(customer(env, i, callCenter))
 
-if __name__ == "__main__":
+def simulate(maxEmployees = 10, avgTime = 5, callInterval = 2, simTime = 120):
     print("Starting Simulation")
     env = simpy.Environment()
     env.process(setup(env, maxEmployees, avgTime, callInterval))
     env.run(until=simTime)
     print(f"Simulation ended with {customersHandled} customers handled")
+    return customersHandled
