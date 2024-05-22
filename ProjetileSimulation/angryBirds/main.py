@@ -20,7 +20,7 @@ while run:
 
         #event for mouse clicked on bird\
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if 110 <= pygame.mouse.get_pos()[0] <= 125 and 320 <= pygame.mouse.get_pos()[1] <= 335:
+            if bird_x-15 <= pygame.mouse.get_pos()[0] <= bird_x+15 and bird_y-15 <= pygame.mouse.get_pos()[1] <= bird_y+15:
                 bird_x, bird_y = pygame.mouse.get_pos()
                 print("Mouse Clicked", bird_x, bird_y)
         
