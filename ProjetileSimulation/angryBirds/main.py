@@ -1,9 +1,14 @@
+#angry birds game
 import pygame
 
 pygame.init()
 
 
 screen = pygame.display.set_mode((800,600))
+
+#bird co-ordinates
+bird_x = 111
+bird_y = 326
 
 run = True
 while run:
@@ -14,10 +19,12 @@ while run:
             run = False
 
         #event for mouse clicked on bird\
-        if event.type == pygame.MOUSEBUTTONDOWN and (110, 320) <= pygame.mouse.get_pos() <= (125, 335):
-            print("Mouse Clicked")
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if 110 <= pygame.mouse.get_pos()[0] <= 125 and 320 <= pygame.mouse.get_pos()[1] <= 335:
+                bird_x, bird_y = pygame.mouse.get_pos()
+                print("Mouse Clicked", bird_x, bird_y)
         
-    
+    #background
     screen.fill((255,255,255))
 
     #grass
@@ -29,7 +36,7 @@ while run:
 
 
     #bird
-    pygame.draw.circle(screen, (255, 0,0), (110, 320), 15)
+    pygame.draw.circle(screen, (255, 0,0), (bird_x, bird_y), 15)
 
 
     pygame.display.flip()
