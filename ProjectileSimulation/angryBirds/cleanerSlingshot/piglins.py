@@ -23,7 +23,8 @@ class Piglin:
             for entity in self.background.obstacles+self.background.piglins:
                 if entity != self:
                     if self.rect.colliderect(entity.rect):
-                        return
+                        if entity.rect.top <= self.rect.bottom:
+                            return
             self.y += 1
             self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
 
