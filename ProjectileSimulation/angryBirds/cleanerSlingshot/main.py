@@ -19,7 +19,7 @@ def main():
     Background.obstacles = [
         Obstacle(screen, x=400, y=300, width=20, height=100),
         Obstacle(screen, x=500, y=300, width=20, height=100),
-        Obstacle(screen, x=400, y=280, width=100, height=20),
+        Obstacle(screen, x=400, y=280, width=120, height=20),
     ]
 
     run = True
