@@ -5,8 +5,16 @@ class Obstacle:
         self.screen = screen
         self.rect = pygame.Rect(x, y, width, height)
         self.color = color
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
         self.durability = durability
-        
+
+    #code of the obstacle to naturally fall to the ground (call it directly in main.py)
+    def falling(self):
+        if self.y + self.height <= 400:
+            self.y += 1
     def draw(self):
         pygame.draw.rect(self.screen, self.color, self.rect)
 
