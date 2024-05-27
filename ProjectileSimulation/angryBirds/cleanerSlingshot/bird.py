@@ -4,8 +4,9 @@ from button import Button
 from background import Background
 
 class Bird:
-    def __init__(self, screen, mass, elasticity, cair, g, k):
+    def __init__(self, screen, backgroundInstance, mass, elasticity, cair, g, k):
         self.screen = screen
+        self.background = backgroundInstance
         self.mass = mass
         self.elasticity = elasticity
         self.cair = cair
@@ -86,11 +87,11 @@ class Bird:
                 self.handle_collision(wall=self.current_coords[0] + self.bird_radius >= 800)
                 self.start_time = current_time
             
-            for obstacle in Background.obstacles:
+            for obstacle in self.background.obstacles:
                 if obstacle.rect.collidepoint(self.current_coords) :
                     if obstacle.is_hit():
                         self.hit_sound.play()
-                        Background.obstacles.remove(obstacle)
+                        self.background.obstacles.remove(obstacle)
                     #self.obstacle_collision(obstacle)
                     #self.start_time = current_time
 
